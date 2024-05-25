@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.rectorlee.mapper.TreeMapper">
+    <resultMap id="TreeResult" type="top.rectorlee.entity.Node">
+        <result column="unit_code" property="nodeId" />
+        <result column="name" property="nodeName" />
+        <result column="parent_id" property="parentNodeId" />
+        <result column="parent_name" property="parentNodeName" />
+        <result column="level" property="level" />
+    </resultMap>
+
+    <select id="selectNodes" resultMap="TreeResult">
+        select * from administrative_unit order by level asc, unit_code asc;
+    </select>
+</mapper>
